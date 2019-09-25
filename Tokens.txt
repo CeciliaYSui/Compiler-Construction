@@ -1,0 +1,55 @@
+#-----------------------------------------------------------------
+# Author ------- CeciliaY Y. Sui 
+# Course ------- Compiler Construction
+# Assginment --- Project Checkpoint #1
+# Description -- All Tokens in SLIC 
+#-----------------------------------------------------------------
+# Regex                 # Name
++                       ADDITION
+-                       SUBTRACTION
+*                       MULTIPLICATION
+/                       DIVISION
+%                       MODULUS
+<                       LESS
+>                       GREATER
+<=                      LESSEQUAL
+>=                      GREATEREQUAL
+=                       EQUAL
+<>                      NOTEQUAL
+&                       BOOLAND
+|                       BOOLOR
+~                       BOOLNOT
+(                       LEFTPARENTH
+)                       RIGHTPARENTH
+[                       LEFTBRACKET
+]                       RIGHTBRACKET
+;                       SEMICOLON
+:                       COLON
+,                       COMMA 
+#                       COMMENT  
+:=                      ASSIGN 
+!                       CARRIAGERETURN
+[mM][aA][iI][nN]                        MAIN 
+[eE][nN][dD] [mM][aA][iI][nN]           ENDMAIN
+[eE][nN][dD]                            END
+[eE][xX][iI][tT]                        EXIT
+[iI][fF]                                IF 
+[eE][lL][sS][eE]                        ELSE 
+[eE][nN][dD] [iI][fF]                   ENDIF
+[wW][hH][iI][lL][eE]                    WHILE 
+[eE][nN][dD] [wW][hH][iI][lL][eE]       ENDWHILE
+[tT][oO]                                TO 
+[cC][oO][uU][nN][tT][iI][nN][gG]        COUNTING
+[eE][nN][dD] [cC][oO][uU][nN][tT][iI][nN][gG]   ENDCOUNTING
+[uU][pP][wW][aA][rR][dD]                UPWARD 
+[dD][oO][wW][nN][wW][aA][rR][dD]        DOWNWARD 
+[rR][eE][aA][lL]                        REAL 
+[iI][nN][tT][eE][gG][eE][rR]            INTEGER 
+[dD][aA][tT][aA]                        DATA
+[aA][lL][gG][oO][rR][iI][tT][hH][mM]    ALGORITHM
+[rR][eE][aA][dD]                        READ 
+[pP][rR][iI][nN][tT]                    PRINT
+[a-zA-Z][a-zA-Z0-9]*                    VARIABLENAME 
+"([^"]*("{2})*[^"]*)*"                  STRING
+[0-9]+                                  INTEGERREP
+[-+]?[0-9]+(.[0-9]+)?([eE][-+]?[0-9]+)? REALREP 
