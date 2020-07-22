@@ -1,0 +1,9 @@
+main; 
+    data: 
+        integer: x, y[10]; 
+        real: z;  
+    algorithm:  
+        y[3] := 0; 
+        y[0] := 1; 
+        y[y[3] + (1 * 1)] := y[0]; 
+end main; 

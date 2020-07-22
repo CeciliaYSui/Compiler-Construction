@@ -1,0 +1,99 @@
+[0] NOP; /*---------------------------------------------------------
+[1] NOP;  * Programmer--Cecilia Y. Sui
+[2] NOP;  * Course------CS4223 
+[3] NOP;  * Project-----Homework #2
+[4] NOP;  * Due---------September 10, 2019
+[5] NOP;  *
+[6] NOP;  * This program computes and displays an estimated square
+[7] NOP;  * root. 
+[8] NOP;  *---------------------------------------------------------
+[9] ISP 4; make room for 4 variables
+[10] NOP; /* Enter the raw data. */ 
+[11] LLI 83; ASCII Code for ’S’
+[12] PTC
+[13] LLI 101; ‘e’
+[14] PTC
+[15] LLI 108; ‘l’
+[16] PTC
+[17] LLI 101; ‘e’
+[18] PTC
+[19] LLI 99; ‘c’
+[20] PTC
+[21] LLI 116; ’t’
+[22] PTC
+[23] LLI 32; ‘ ‘
+[24] PTC
+[25] LLI 110; ’n’
+[26] PTC
+[27] LLI 117; ‘u’
+[28] PTC
+[29] LLI 109; ‘m’
+[30] PTC
+[31] LLI 98; ‘b’
+[32] PTC
+[33] LLI 101; ‘e’
+[34] PTC
+[35] LLI 114; ‘r’
+[36] PTC
+[37] LLI 58; ‘:’
+[38] PTC
+[39] LLI 32; ‘ ‘
+[40] PTC 
+[41] LAA 0; absolute address for float x 
+[42] INF
+[43] STO
+[44] NOP; /* An initial estimate of the square root */ 
+[45] LAA 2; absolute address for float newEstimate
+[46] LLF 1.0
+[47] STO; newEstimate = 1.0
+[48] NOP; /* Estimate the square root */ 
+[49] LAA 2; float newEstimate 
+[50] LAA 1; float estimate 
+[51] LAA 2; float newEstimate
+[52] LOD
+[53] STO
+[54] LAA 0; float x 
+[55] LOD
+[56] LAA 1; float estimate
+[57] LOD
+[58] DVF; calculate x/estimate 
+[59] LAA 1
+[60] LOD
+[61] ADF; calculate estimate + x/estimate
+[62] LLF 0.5; load in float 0.5
+[63] MLF; calculate 0.5*(estimate + x/estimate)
+[64] STO; store value to newEstimate 
+[65] LAA 3; float difference 
+[66] LAA 2; float newEstimate 
+[67] LOD
+[68] LAA 1; float estimate 
+[69] LOD
+[70] SBF; calculate newEstimate - estimate
+[71] STO; store value to difference 
+[72] LLF -0.005
+[73] LAA 3
+[74] LOD 
+[75] LEF; check if difference >= -0.005 
+[76] JPF 49; jump back to loop if difference < -0.005 (LEF results in False)
+[77] LLF 0.005
+[78] LAA 3
+[79] LOD
+[80] GEF; check if difference <= 0.005 
+[81] JPF 49; jump back to loop if difference > 0.005 (GEF results in False)
+[82] NOP; /* Display the estimated square root */ 
+[83] LLI 115; ’s’
+[84] PTC
+[85] LLI 113; ‘q’
+[86] PTC
+[87] LLI 114; ‘r’
+[88] PTC
+[89] LLI 116; ’t’
+[90] PTC
+[91] LLI 58; ‘:’
+[92] PTC
+[93] LLI 32; ‘ ‘
+[94] PTC
+[95] LAA 2; float newEstimate 
+[96] LOD
+[97] PTF
+[98] PTL

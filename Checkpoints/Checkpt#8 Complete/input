@@ -1,0 +1,41 @@
+#=================================================================
+# File--------peevedpigeons.slic
+# Programmer--Bryan Crawley
+# Project-----Peeved Pigeons
+#
+# Play the "Peeved Pigeons" game. This program originated as an
+# assignment in "Introduction to Programming". A pigeon uses a
+# slingshot to shoot a stone at an annoying pig.
+#=================================================================
+
+main;
+   data:
+      real: pigDistance;
+      real: angleDegrees;
+      real: angleRadians;
+      real: drawLength;
+      real: velocity;
+      real: miss;
+      real: result;
+      real: x, term, sine;
+      integer: n;
+      integer: offBy;
+
+   algorithm:
+      print !;
+      print "Distance to pig (feet) -------- ";
+      read pigDistance;
+      
+      while (1); 
+         print !;
+         print "Angle of elevation (degrees) -- ";
+         read angleDegrees;
+         print "Draw length (inches) ---------- ";
+         read drawLength;
+         angleRadians := angleDegrees * 3.14159265 / 180;
+		 
+         x := 2 * angleRadians;
+		 exit; 
+      end while;
+
+end main;

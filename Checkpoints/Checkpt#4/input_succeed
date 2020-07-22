@@ -1,0 +1,6 @@
+main;
+    data: 
+        integer: x, y, fido[10]; 
+        real: a, b[5], fluffy; 
+    algorithm: 
+end main; 

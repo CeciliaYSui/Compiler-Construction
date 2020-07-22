@@ -1,0 +1,6 @@
+main; 
+    data: 
+        integer: x, y[10]    # ERROR: missing semicolon 
+        real: ;
+    algorithm: 
+end main; 

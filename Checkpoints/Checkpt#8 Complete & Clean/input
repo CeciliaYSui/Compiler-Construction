@@ -1,0 +1,11 @@
+main; 
+    data: 
+        integer: a, c; 
+        real: b; 
+    algorithm:
+        a := 5; 
+        c := 10; 
+        counting c upward 6 to 5; 
+            print "c: ", c, !; 
+        end counting; 
+end main; 

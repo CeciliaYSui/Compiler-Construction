@@ -1,0 +1,396 @@
+Terminals which are not used
+
+   ADDITION
+   SUBTRACTION
+   MULTIPLICATION
+   DIVISION
+   MODULUS
+   LESSTHAN
+   GREATERTHAN
+   LESSOREQUAL
+   GREATEROREQUAL
+   EQUAL
+   NOTEQUAL
+   AND
+   OR
+   NOT
+   LPARENTH
+   RPARENTH
+   ASSIGN
+   CARRIAGERETURN
+   EXIT
+   IF
+   ELSE
+   WHILE
+   TO
+   COUNTING
+   UPWARD
+   DOWNWARD
+   READ
+   PRINT
+   STRING
+   REALCONSTANT
+   NEWLINE
+   TRASH
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: MAIN SEMICOLON data algorithm END MAIN SEMICOLON
+
+    2 data: DATA COLON fulldeclaration
+    3     | DATA COLON
+
+    4 fulldeclaration: declaration
+    5                | declaration fulldeclaration
+
+    6 declaration: datatype COLON varlist SEMICOLON
+
+    7 datatype: REAL
+    8         | INTEGER
+
+    9 varlist: item
+   10        | item COMMA varlist
+   11        | /* empty */
+
+   12 item: VARIABLE
+   13     | VARIABLE LBRACKET INTCONSTANT RBRACKET
+
+   14 algorithm: ALGORITHM COLON body
+
+   15 body: /* empty */
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+ADDITION (258)
+SUBTRACTION (259)
+MULTIPLICATION (260)
+DIVISION (261)
+MODULUS (262)
+LESSTHAN (263)
+GREATERTHAN (264)
+LESSOREQUAL (265)
+GREATEROREQUAL (266)
+EQUAL (267)
+NOTEQUAL (268)
+AND (269)
+OR (270)
+NOT (271)
+LPARENTH (272)
+RPARENTH (273)
+LBRACKET (274) 13
+RBRACKET (275) 13
+SEMICOLON (276) 1 6
+COLON (277) 2 3 6 14
+COMMA (278) 10
+ASSIGN (279)
+CARRIAGERETURN (280)
+MAIN (281) 1
+END (282) 1
+EXIT (283)
+IF (284)
+ELSE (285)
+WHILE (286)
+TO (287)
+COUNTING (288)
+UPWARD (289)
+DOWNWARD (290)
+REAL (291) 7
+INTEGER (292) 8
+DATA (293) 2 3
+ALGORITHM (294) 14
+READ (295)
+PRINT (296)
+VARIABLE (297) 12 13
+STRING (298)
+INTCONSTANT (299) 13
+REALCONSTANT (300)
+NEWLINE (301)
+TRASH (302)
+
+
+Nonterminals, with rules where they appear
+
+$accept (48)
+    on left: 0
+program (49)
+    on left: 1, on right: 0
+data (50)
+    on left: 2 3, on right: 1
+fulldeclaration (51)
+    on left: 4 5, on right: 2 5
+declaration (52)
+    on left: 6, on right: 4 5
+datatype (53)
+    on left: 7 8, on right: 6
+varlist (54)
+    on left: 9 10 11, on right: 6 10
+item (55)
+    on left: 12 13, on right: 9 10
+algorithm (56)
+    on left: 14, on right: 1
+body (57)
+    on left: 15, on right: 14
+
+
+state 0
+
+    0 $accept: . program $end
+
+    MAIN  shift, and go to state 1
+
+    program  go to state 2
+
+
+state 1
+
+    1 program: MAIN . SEMICOLON data algorithm END MAIN SEMICOLON
+
+    SEMICOLON  shift, and go to state 3
+
+
+state 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 4
+
+
+state 3
+
+    1 program: MAIN SEMICOLON . data algorithm END MAIN SEMICOLON
+
+    DATA  shift, and go to state 5
+
+    data  go to state 6
+
+
+state 4
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+state 5
+
+    2 data: DATA . COLON fulldeclaration
+    3     | DATA . COLON
+
+    COLON  shift, and go to state 7
+
+
+state 6
+
+    1 program: MAIN SEMICOLON data . algorithm END MAIN SEMICOLON
+
+    ALGORITHM  shift, and go to state 8
+
+    algorithm  go to state 9
+
+
+state 7
+
+    2 data: DATA COLON . fulldeclaration
+    3     | DATA COLON .
+
+    REAL     shift, and go to state 10
+    INTEGER  shift, and go to state 11
+
+    $default  reduce using rule 3 (data)
+
+    fulldeclaration  go to state 12
+    declaration      go to state 13
+    datatype         go to state 14
+
+
+state 8
+
+   14 algorithm: ALGORITHM . COLON body
+
+    COLON  shift, and go to state 15
+
+
+state 9
+
+    1 program: MAIN SEMICOLON data algorithm . END MAIN SEMICOLON
+
+    END  shift, and go to state 16
+
+
+state 10
+
+    7 datatype: REAL .
+
+    $default  reduce using rule 7 (datatype)
+
+
+state 11
+
+    8 datatype: INTEGER .
+
+    $default  reduce using rule 8 (datatype)
+
+
+state 12
+
+    2 data: DATA COLON fulldeclaration .
+
+    $default  reduce using rule 2 (data)
+
+
+state 13
+
+    4 fulldeclaration: declaration .
+    5                | declaration . fulldeclaration
+
+    REAL     shift, and go to state 10
+    INTEGER  shift, and go to state 11
+
+    $default  reduce using rule 4 (fulldeclaration)
+
+    fulldeclaration  go to state 17
+    declaration      go to state 13
+    datatype         go to state 14
+
+
+state 14
+
+    6 declaration: datatype . COLON varlist SEMICOLON
+
+    COLON  shift, and go to state 18
+
+
+state 15
+
+   14 algorithm: ALGORITHM COLON . body
+
+    $default  reduce using rule 15 (body)
+
+    body  go to state 19
+
+
+state 16
+
+    1 program: MAIN SEMICOLON data algorithm END . MAIN SEMICOLON
+
+    MAIN  shift, and go to state 20
+
+
+state 17
+
+    5 fulldeclaration: declaration fulldeclaration .
+
+    $default  reduce using rule 5 (fulldeclaration)
+
+
+state 18
+
+    6 declaration: datatype COLON . varlist SEMICOLON
+
+    VARIABLE  shift, and go to state 21
+
+    $default  reduce using rule 11 (varlist)
+
+    varlist  go to state 22
+    item     go to state 23
+
+
+state 19
+
+   14 algorithm: ALGORITHM COLON body .
+
+    $default  reduce using rule 14 (algorithm)
+
+
+state 20
+
+    1 program: MAIN SEMICOLON data algorithm END MAIN . SEMICOLON
+
+    SEMICOLON  shift, and go to state 24
+
+
+state 21
+
+   12 item: VARIABLE .
+   13     | VARIABLE . LBRACKET INTCONSTANT RBRACKET
+
+    LBRACKET  shift, and go to state 25
+
+    $default  reduce using rule 12 (item)
+
+
+state 22
+
+    6 declaration: datatype COLON varlist . SEMICOLON
+
+    SEMICOLON  shift, and go to state 26
+
+
+state 23
+
+    9 varlist: item .
+   10        | item . COMMA varlist
+
+    COMMA  shift, and go to state 27
+
+    $default  reduce using rule 9 (varlist)
+
+
+state 24
+
+    1 program: MAIN SEMICOLON data algorithm END MAIN SEMICOLON .
+
+    $default  reduce using rule 1 (program)
+
+
+state 25
+
+   13 item: VARIABLE LBRACKET . INTCONSTANT RBRACKET
+
+    INTCONSTANT  shift, and go to state 28
+
+
+state 26
+
+    6 declaration: datatype COLON varlist SEMICOLON .
+
+    $default  reduce using rule 6 (declaration)
+
+
+state 27
+
+   10 varlist: item COMMA . varlist
+
+    VARIABLE  shift, and go to state 21
+
+    $default  reduce using rule 11 (varlist)
+
+    varlist  go to state 29
+    item     go to state 23
+
+
+state 28
+
+   13 item: VARIABLE LBRACKET INTCONSTANT . RBRACKET
+
+    RBRACKET  shift, and go to state 30
+
+
+state 29
+
+   10 varlist: item COMMA varlist .
+
+    $default  reduce using rule 10 (varlist)
+
+
+state 30
+
+   13 item: VARIABLE LBRACKET INTCONSTANT RBRACKET .
+
+    $default  reduce using rule 13 (item)

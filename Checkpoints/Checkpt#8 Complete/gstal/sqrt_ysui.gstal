@@ -1,0 +1,99 @@
+NOP; /*---------------------------------------------------------
+NOP;  * Programmer--Cecilia Y. Sui
+NOP;  * Course------CS4223 
+NOP;  * Project-----Homework #2
+NOP;  * Due---------September 10, 2019
+NOP;  *
+NOP;  * This program computes and displays an estimated square
+NOP;  * root. 
+NOP;  *---------------------------------------------------------
+ISP 4; make room for 4 variables
+NOP; /* Enter the raw data. */ 
+LLI 83; ASCII Code for ’S’
+PTC
+LLI 101; ‘e’
+PTC
+LLI 108; ‘l’
+PTC
+LLI 101; ‘e’
+PTC
+LLI 99; ‘c’
+PTC
+LLI 116; ’t’
+PTC
+LLI 32; ‘ ‘
+PTC
+LLI 110; ’n’
+PTC
+LLI 117; ‘u’
+PTC
+LLI 109; ‘m’
+PTC
+LLI 98; ‘b’
+PTC
+LLI 101; ‘e’
+PTC
+LLI 114; ‘r’
+PTC
+LLI 58; ‘:’
+PTC
+LLI 32; ‘ ‘
+PTC 
+LAA 0; absolute address for float x 
+INF
+STO
+NOP; /* An initial estimate of the square root */ 
+LAA 2; absolute address for float newEstimate
+LLF 1.0
+STO; newEstimate = 1.0
+NOP; /* Estimate the square root */ 
+LAA 2; float newEstimate 
+LAA 1; float estimate 
+LAA 2; float newEstimate
+LOD
+STO
+LAA 0; float x 
+LOD
+LAA 1; float estimate
+LOD
+DVF; calculate x/estimate 
+LAA 1
+LOD
+ADF; calculate estimate + x/estimate
+LLF 0.5; load in float 0.5
+MLF; calculate 0.5*(estimate + x/estimate)
+STO; store value to newEstimate 
+LAA 3; float difference 
+LAA 2; float newEstimate 
+LOD
+LAA 1; float estimate 
+LOD
+SBF; calculate newEstimate - estimate
+STO; store value to difference 
+LLF -0.005
+LAA 3
+LOD 
+LEF; check if difference >= -0.005 
+JPF 49; jump back to loop if difference < -0.005 (LEF results in False)
+LLF 0.005
+LAA 3
+LOD
+GEF; check if difference <= 0.005 
+JPF 49; jump back to loop if difference > 0.005 (GEF results in False)
+NOP; /* Display the estimated square root */ 
+LLI 115; ’s’
+PTC
+LLI 113; ‘q’
+PTC
+LLI 114; ‘r’
+PTC
+LLI 116; ’t’
+PTC
+LLI 58; ‘:’
+PTC
+LLI 32; ‘ ‘
+PTC
+LAA 2; float newEstimate 
+LOD
+PTF
+PTL

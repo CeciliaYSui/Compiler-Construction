@@ -1,0 +1,31 @@
+ISP 2
+LAA 0
+LLI 0
+STO
+LAA 1
+LLI 1
+STO
+LAA 1
+LOD
+LLI 10
+LEI ; cnt <= 10
+JPF 26 ; 0/F --> end loop 
+LAA 0 
+LAA 0
+LOD
+LAA 1
+LOD
+ADI
+STO ; sum = sum + cnt; 
+LAA 1 
+LAA 1
+LOD
+LLI 1
+ADI
+STO ; cnt = cnt + 1; 
+JMP 7
+LAA 0
+LOD
+PTI
+PTL
+HLT
